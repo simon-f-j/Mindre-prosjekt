@@ -7,15 +7,10 @@ Created on Sun Oct 25 20:36:46 2020
 @author: simon
 """
 
-#%%
-
 import random as rd
 
 
-
 # Create list of three doors, fill with 'empty'
-
-
 def  keepdoor():
     doors=['empty','empty','empty']
     # Replace a random door with prize, and save the location of the prize as a variable
@@ -24,10 +19,8 @@ def  keepdoor():
     doors[prize-1]='prize'
     #print(doors)
 
-
     # Choose a door
     choice_p = rd.randint(1,3)-1
-
 
     # create a list of doors without prizes        
     cnt=0
@@ -90,11 +83,6 @@ def switchdoor():
         print('you lost')
         return 0
 
-#%%
-
-
-
-
 
     # choose the remaining door:
     for choice in choices:
@@ -110,11 +98,6 @@ def switchdoor():
         print('you lost...')
         cnt=0
         return cnt
-
-
-
-
-#%%
 
  
 if __name__ =="__main__":
