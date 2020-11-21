@@ -1,2 +1,2 @@
-# Mindre-prosjekt
-mindre kodebaserte prosjekt
+# Mindre prosjekt
+en samling mindre prosjekt av egen interesse
