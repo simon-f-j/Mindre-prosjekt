@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Fri Oct  9 13:23:35 2020
-
+En enkel implementering av hangman i kommandolinja
 @author: simon
 """
 
