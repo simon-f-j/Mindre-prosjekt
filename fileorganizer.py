@@ -4,6 +4,8 @@ Created on Thu Oct  8 13:20:45 2020
 
 @author: simon
 """
+# enkelt skript som ber om å velge en mappe, og lager/flytter filer til mappene: dokument, tekst og andre filer
+
 
 import os
 import shutil
