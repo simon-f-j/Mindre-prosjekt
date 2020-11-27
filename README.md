@@ -1,2 +1,2 @@
 # Mindre prosjekt
-en samling mindre prosjekt av egen interesse
+en samling mindre prosjekt for å bedre min forståelse av python
