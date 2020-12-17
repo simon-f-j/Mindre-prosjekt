@@ -1,0 +1,8 @@
+excel/
+__pycache__/
+python_testing/
+my_dict.json
+superstore.xls
+*.spec
+*.pdf
+*.zip
