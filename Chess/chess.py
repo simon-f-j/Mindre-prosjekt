@@ -1,4 +1,5 @@
 # chess from scratch
+## very much a work in progress!
 #%%
 import pandas as pd
 
