@@ -95,9 +95,67 @@ def roadblock(piece_position,location_):
 
 
 
+#%%
+
+def legal_move_w(piece):
+    piece_type = piece[:len(piece)-3]
+    position = decode_position(find_position(piece))
+    roadblocks=game_board.notnull()
+    legal_moves = []
+    print(f"piece_type: {piece_type}, position: {position}")
+
+    if piece_type == 'pawn':
+        for n in range(1,3):
+            position_ = (position[0]+n,position[1])
+            if roadblocks.iloc[position_] == False:
+                print(f"legal move: {position_}")
+            else:
+                break
+        
+    if piece_type == 'tower':
+        # vertical movement
+        for n in range(0,8):
+            if n == position[1]:
+                continue
+            position_ = (n,position[1])
+            if roadblocks.iloc[position_]==False:
+                legal_moves.append(position_)
+            else:
+                break
+        # horizontal movement
+        for n in range(0,8):
+            if n == position[0]:
+                continue
+            position_ = (position[0],n)
+            if roadblocks.iloc[position_]==False:
+                legal_moves.append(position_)
+            else:
+                break
+        
+
+
+    print(f"legal moves: {legal_moves}")
+    return legal_moves
 
 
 
+#%%
+
+def legal_move_b(piece):
+    piece_type = piece[:len(piece)-3]
+    position = decode_position(find_position(piece))
+    roadblocks=game_board.notnull()
+    legal_moves = []
+
+    if piece_type == 'pawn':
+        for n in range(1,3):
+            position_ = (position[0]-n,position[1])
+            if roadblocks.iloc[position_] == False:
+                print(f"legal move: {position_}") 
+
+          
+
+#%%
 
 def decode_position(position):
     letters_value={'A':0,'B':1,'C':2,'D':3,'E':4,'F':5,'G':6,'H':7}
