@@ -2,21 +2,11 @@
 #%%
 import pandas as pd
 
+
+# setting up the reference board with numbers and letters
 board_letters = pd.DataFrame(columns=['A','B','C','D','E','F','G','H'])
 board_numbers = pd.DataFrame(['1','2','3','4','5','6','7','8'])
 
-# setting up the pieces
-pawns_w=['pawn_'+str(i) +'w' for i in range(1,9)]
-pawns_b=['pawn_' +str(i)+'b' for i in range(1,9)]
-others=['tower_1','knight_1','bishop_1','queen','king','bishop_2','tower_2','knight_2']
-others_w=[i +'w' for i in others]
-others_b=[i +'b' for i in others]
-
-white_pieces=pawns_w+others_w
-black_pieces=pawns_b+others_b
-
-
-# setting up the board for reference
 numbers=['1','2','3','4','5','6','7','8']
 letters=['A','B','C','D','E','F','G','H']
 index_=[_ for _ in range(1,9)]
@@ -34,6 +24,20 @@ for letter in letters:
     tmp=[]   
     cnt_let+=1
 board.index += 1
+
+
+# setting up the pieces
+pawns_w=['pawn_'+str(i) +'w' for i in range(1,9)]
+pawns_b=['pawn_' +str(i)+'b' for i in range(1,9)]
+others=['tower_1','knight_1','bishop_1','queen','king','bishop_2','tower_2','knight_2']
+others_w=[i +'w' for i in others]
+others_b=[i +'b' for i in others]
+
+white_pieces=pawns_w+others_w
+black_pieces=pawns_b+others_b
+
+
+
 
 # setting up the gameboard
 ## first creating a copy so we can set up the pieces without changing the reference-board
@@ -57,7 +61,7 @@ piece_positions=game_board.isin(white_pieces+black_pieces)
 
 
 
-
+# a method for moving pieces based on type and destination
 def move_piece_w(piece,location):
     piece_type = piece[:len(piece)-3]
     piece_position = decode_position(find_position(piece))  
@@ -67,8 +71,7 @@ def move_piece_w(piece,location):
     # create a dataframe where empty spaces is returned as True, in order to check wheter we can make this move.
     roadblocks=game_board.notnull()
 
-    #spaces inbetween
-    inbetween=
+
 
     if piece_type == 'pawn' and distance[0]>0<=2 and distance[1]==0 and roadblocks.iloc[location_] == False:
         print("successful move")
