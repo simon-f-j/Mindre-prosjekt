@@ -3,67 +3,71 @@
 #%%
 import pandas as pd
 
+def setup_board():
+    # setting up the reference board with numbers and letters
+    board_letters = pd.DataFrame(columns=['A','B','C','D','E','F','G','H'])
+    board_numbers = pd.DataFrame(['1','2','3','4','5','6','7','8'])
 
-# setting up the reference board with numbers and letters
-board_letters = pd.DataFrame(columns=['A','B','C','D','E','F','G','H'])
-board_numbers = pd.DataFrame(['1','2','3','4','5','6','7','8'])
-
-numbers=['1','2','3','4','5','6','7','8']
-letters=['A','B','C','D','E','F','G','H']
-index_=[_ for _ in range(1,9)]
-test=[]
-board=pd.DataFrame()
-cnt_let = 0
-cnt_num = 0
-tmp=[]
-for letter in letters:
-    for number in numbers:        
-        pos = letter+number
-        tmp.append(pos)
-        cnt_num+=1
-    board.insert(cnt_let,letter,tmp)
-    tmp=[]   
-    cnt_let+=1
-board.index += 1
-
-
-# setting up the pieces
-pawns_w=['pawn_'+str(i) +'w' for i in range(1,9)]
-pawns_b=['pawn_' +str(i)+'b' for i in range(1,9)]
-others=['tower_1','knight_1','bishop_1','queen','king','bishop_2','tower_2','knight_2']
-others_w=[i +'w' for i in others]
-others_b=[i +'b' for i in others]
-
-white_pieces=pawns_w+others_w
-black_pieces=pawns_b+others_b
+    numbers=['1','2','3','4','5','6','7','8']
+    letters=['A','B','C','D','E','F','G','H']
+    index_=[_ for _ in range(1,9)]
+    test=[]
+    board=pd.DataFrame()
+    cnt_let = 0
+    cnt_num = 0
+    tmp=[]
+    for letter in letters:
+        for number in numbers:        
+            pos = letter+number
+            tmp.append(pos)
+            cnt_num+=1
+        board.insert(cnt_let,letter,tmp)
+        tmp=[]   
+        cnt_let+=1
+    board.index += 1
 
 
+    # setting up the pieces
+    pawns_w=['pawn_'+str(i) +'w' for i in range(1,9)]
+    pawns_b=['pawn_' +str(i)+'b' for i in range(1,9)]
+    others=['tower_1','knight_1','bishop_1','queen','king','bishop_2','tower_2','knight_2']
+    others_w=[i +'w' for i in others]
+    others_b=[i +'b' for i in others]
 
-
-# setting up the gameboard
-## first creating a copy so we can set up the pieces without changing the reference-board
-game_board = board.copy()
-
-
-game_board.loc[3]=None
-game_board.loc[4]=None
-game_board.loc[5]=None
-game_board.loc[6]=None
-
-## inserting pawns
-game_board.loc[2]=pawns_w
-game_board.loc[7]=pawns_b
-## inserting other pieces
-game_board.loc[1]=others_w
-game_board.loc[8]=others_b
-
-
-piece_positions=game_board.isin(white_pieces+black_pieces)
+    white_pieces=pawns_w+others_w
+    black_pieces=pawns_b+others_b
 
 
 
-# a method for moving pieces based on type and destination
+
+    # setting up the gameboard
+    ## first creating a copy so we can set up the pieces without changing the reference-board
+    game_board = board.copy()
+
+
+    game_board.loc[3]=None
+    game_board.loc[4]=None
+    game_board.loc[5]=None
+    game_board.loc[6]=None
+
+    ## inserting pawns
+    game_board.loc[2]=pawns_w
+    game_board.loc[7]=pawns_b
+    ## inserting other pieces
+    game_board.loc[1]=others_w
+    game_board.loc[8]=others_b
+
+
+    piece_positions=game_board.isin(white_pieces+black_pieces)
+
+    return board,game_board
+
+
+
+
+
 def move_piece_w(piece,location):
+    # a method for moving pieces based on type and destination
     piece_type = piece[:len(piece)-3]
     piece_position = decode_position(find_position(piece))  
     location_ = decode_position(location)  
@@ -95,7 +99,7 @@ def roadblock(piece_position,location_):
 
 
 
-#%%
+
 
 def legal_move_w(piece):
     piece_type = piece[:len(piece)-3]
@@ -139,7 +143,7 @@ def legal_move_w(piece):
 
 
 
-#%%
+
 
 def legal_move_b(piece):
     piece_type = piece[:len(piece)-3]
@@ -155,7 +159,7 @@ def legal_move_b(piece):
 
           
 
-#%%
+
 
 def decode_position(position):
     letters_value={'A':0,'B':1,'C':2,'D':3,'E':4,'F':5,'G':6,'H':7}
@@ -199,15 +203,19 @@ def getIndexes(dfObj, value):
 def calc_distance(piece,location):
     pos = decode_position(find_position(piece))
     loc = decode_position(location)
-    cnt = 0
     # the relative distance in xy-coordinates
     distance =[]
-    for item in pos:
+    for cnt,item in enumerate(pos):
         distance.append(loc[cnt]-pos[cnt])
-        cnt+=1    
+            
     
     return distance
 
+
+
+
+if __name__ == "__main__":
+    board,game_board = setup_board()
 
 
 
