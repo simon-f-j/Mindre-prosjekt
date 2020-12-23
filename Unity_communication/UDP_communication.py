@@ -18,7 +18,7 @@ def positional_data(x_position,z_position,y_position,roll,pitch,yaw):
     ## xz makes up the ground plane
 
 
-    # Cocatinated string, converted into utf-8
+    # Cocatenated string, converted into utf-8
     pos = str(x_position)+','+str(y_position)+','+str(z_position)+','+str(roll)+','+str(yaw)+','+str(pitch)
     pos = bytes(pos,'utf-8')
     return pos
