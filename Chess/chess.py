@@ -38,8 +38,6 @@ def setup_board():
     black_pieces=pawns_b+others_b
 
 
-
-
     # setting up the gameboard
     ## first creating a copy so we can set up the pieces without changing the reference-board
     game_board = board.copy()
