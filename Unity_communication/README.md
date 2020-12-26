@@ -4,19 +4,17 @@ Simple way to update the position and orientation of an object in Unity trough d
 
 
 **Background**:<br/>
-This project is a continuation of some of the work carried out in my masters thesis, where i created a visualisation for simulations running in simulink. During the work with my thesis
-i was tasked with setting up a 'real-time' simulation of an electric ferry running in a 3d-environment. However i found there was not many pulically available options to accomplish this task
-in a satisfactory way. I tried the different 3d libraries that come with simulink, and quickly found out that i wanted better performance, more modern graphics and full control.
+This project is a continuation of some of the work carried out in my masters thesis, where i created a visualisation for simulations running in simulink. During the work with my thesis i was tasked with setting up a 'real-time' simulation of an electric ferry running in a 3d-environment. However i found there was not many publically available options that would work with Simulink. The motivation to use Simulink came from all the available libraries, especially for electriacl and mechanical systems. 
 
 This led me to Unity, which were an easy alternative to set up a 3d model of the vessel and its environment to the degree i wanted. <br/>
-The solution i came up with was to let Simulink handle all the calculations (since it's pretty good at that sort of thing), and broadcast the position and orientation of the vessel to Unity
-trough localhost UDP.
+The solution i came up with was to let Simulink handle all the calculations of the model (since it's pretty good at that sort of thing), and broadcast the position and orientation of the vessel to Unity trough localhost UDP.<br/>
+This approach i found to be working seamlessly after i spent a weekend setting up the Unity environment and running it whenever i start the model in Simulink. It also opens up the possibility to (maybe) use other devices dedicated to visualise the running simulation, as well as, (again maybe) build to tablets or phones. 
 
 <br/>
 
 
 ![unity2](https://user-images.githubusercontent.com/72814986/103153405-907e6f80-4790-11eb-856c-fb64b7925e2c.PNG)
-
+*Simplified 3d-environement from my thesis running in Real-Time*
 
 
 
