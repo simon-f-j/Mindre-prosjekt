@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Collections;
@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Collections.Specialized;
+using System.Globalization;
 
 public class UDP_TRANSFORM : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class UDP_TRANSFORM : MonoBehaviour
     private float[] transformPosition = new float[3];
     private float[] transformRotation = new float[3];
 
-
+    
 
     // Send data to port 1234
     // format: string with 3 numbers separated by ','
@@ -63,18 +64,18 @@ public class UDP_TRANSFORM : MonoBehaviour
         if (data.Length > 0)
         {
             var str = System.Text.Encoding.Default.GetString(data);
-            Debug.Log("Received Data" + str);
+            Debug.Log("Received Data: " + str);
             string[] messageParts = str.Split(',');
             
             // Position
-            transformPosition[0] = float.Parse(messageParts[0]);
-            transformPosition[1] = float.Parse(messageParts[1]);
-            transformPosition[2] = float.Parse(messageParts[2]);
+            transformPosition[0] = float.Parse(messageParts[0], CultureInfo.InvariantCulture);
+            transformPosition[1] = float.Parse(messageParts[1], CultureInfo.InvariantCulture);
+            transformPosition[2] = float.Parse(messageParts[2], CultureInfo.InvariantCulture);
 
             // Orientation
-            transformRotation[0] = float.Parse(messageParts[3]);
-            transformRotation[1] = float.Parse(messageParts[4]);
-            transformRotation[2] = float.Parse(messageParts[5]);
+            transformRotation[0] = float.Parse(messageParts[3], CultureInfo.InvariantCulture);
+            transformRotation[1] = float.Parse(messageParts[4], CultureInfo.InvariantCulture);
+            transformRotation[2] = float.Parse(messageParts[5], CultureInfo.InvariantCulture);
         }
     }
 }
