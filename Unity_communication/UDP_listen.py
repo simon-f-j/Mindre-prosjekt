@@ -1,5 +1,5 @@
-# UDP_Listen
-#%%
+## UDP_Listen
+# simple script to listen for UDP data
 
 import socket
 
@@ -16,4 +16,3 @@ while True:
 
     if input("yes") == 'y':
         break
-# %%
