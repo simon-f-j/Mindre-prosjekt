@@ -24,7 +24,7 @@ The coordinates of the vessel is broadcast as a string containing coordinates fo
 
 
 ![unity1](https://user-images.githubusercontent.com/72814986/103153202-3204c180-478f-11eb-89d4-5bcd1d0cf958.PNG)
-
+*Implementation of the communication script to a cube object*
 
 **Setup**:<br/>
 In Unity: for the object you want to move with data trough UDP, simply add the 'UDP_TRANSFORM.cs' to a component, and drag the object to the area named 'cube'<br/>
